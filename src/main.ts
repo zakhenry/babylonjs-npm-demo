@@ -1,6 +1,7 @@
 import { ArcRotateCamera, DirectionalLight, Engine, Mesh, Scene, ShadowGenerator, Vector3 } from 'babylonjs';
+import { AsciiArtPostProcess } from 'babylonjs-post-process';
 
-const canvas = document.getElementById('babylon');
+const canvas: HTMLCanvasElement = document.getElementById('babylon') as HTMLCanvasElement;
 const engine = new Engine(canvas);
 
 const scene = new Scene(engine);
@@ -24,6 +25,7 @@ shadowGenerator.getShadowMap().renderList.push(knot);
 knot.receiveShadows = true;
 ground.receiveShadows = true;
 
+new AsciiArtPostProcess('AsciiArt', camera, '8px Monospace');
 
 engine.runRenderLoop(() => {
   scene.render();
